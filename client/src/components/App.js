@@ -18,15 +18,16 @@ componentDidMount(){
 
   render() {
     return (
-        <BrowserRouter>
-            <div className="container">
+          <div className="container">
+            <BrowserRouter>
+            <div>
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={DashBoard} />
             <Route path="/surveys/new" component={SurveyNew} />
-          </div>
-        </BrowserRouter>
-
+            </div>
+          </BrowserRouter>
+        </div>
     );
   }
 }

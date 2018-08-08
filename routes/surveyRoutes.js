@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const mongoose = require("mongoose");
 
 const requireLogin = require("../middlewares/requireLogin");
@@ -8,20 +9,17 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("surveys");
 
 module.exports = app => {
-
-  app.get('/api/surveys/thanks', (req, res) => {
-    res.send('Thanks for voting!');
+  app.get("/api/surveys/thanks", (req, res) => {
+    res.send("Thanks for voting!");
   });
-  app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
+  app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
     const survey = new Survey({
       title,
       subject,
       body,
-      recipients: recipients.split(",").map(email => ({ email: email.trim() })),
-
-      //return { email: email };
+      recipients: recipients.split(',').map(email => ({ email: email.trim() })),
       _user: req.user.id,
       dateSent: Date.now()
     });

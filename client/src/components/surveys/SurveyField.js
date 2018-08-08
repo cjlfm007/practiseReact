@@ -1,11 +1,9 @@
 //SurveyField contains logic to render a single label and text input
-
 import React from "react";
+//console.log(props.input);
+//console.log(props.meta);
 
 export default ({ input, label, meta: { error, touched } }) => {
-  //console.log(props.input);
-  //console.log(props.meta);
-
   return (
     <div>
       <label>{label}</label>
