@@ -27,9 +27,9 @@ module.exports = app => {
     });
 
     // Great place to send an email
-    const mailer = new Mailer(survey, serveyTemplate(survey));
+    const mailer = new Mailer(survey, surveyTemplate(survey));
     try {
-      await mailer.send;
+      await mailer.send();
       await survey.save();
       req.user.credits -= 1;
       const user = await req.user.save();
